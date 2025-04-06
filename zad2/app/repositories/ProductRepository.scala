@@ -8,9 +8,9 @@ import javax.inject._
 class ProductRepository @Inject()() {
   private var nextId: Long = 4
   private val products = mutable.ListBuffer(
-    Product(1, "Norwegian Wood", 24.99),
-    Product(2, "Kafka on the Shore", 27.50),
-    Product(3, "The City and Its Uncertain Walls", 32.00)
+    Product(1, "Norwegian Wood", 24.99, 1),
+    Product(2, "Kafka on the Shore", 27.50, 1),
+    Product(3, "The City and Its Uncertain Walls", 32.00, 1)
   )
 
   def getAll: Seq[Product] = products.toSeq

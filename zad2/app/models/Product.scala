@@ -5,7 +5,8 @@ import play.api.libs.json.{Json, OFormat}
 case class Product(
   id: Long,
   name: String,
-  price: BigDecimal
+  price: BigDecimal,
+  categoryId: Long
 )
 
 object Product:
