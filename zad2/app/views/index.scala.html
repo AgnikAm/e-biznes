@@ -1,5 +1,50 @@
-@()
+@()(implicit request: RequestHeader)
 
 @main("Welcome to Play") {
   <h1>Welcome to Play!</h1>
+
+  <div id="product-section" style="margin-top: 30px;">
+    <button id="fetchProducts" class="btn btn-primary">
+      Show All Products
+    </button>
+
+    <div id="product-list" style="margin-top: 20px; padding: 15px; border: 1px solid #ddd; display: none;">
+      <h3>Products:</h3>
+      <pre id="product-data">Loading...</pre>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('fetchProducts').addEventListener('click', async () => {
+      const productList = document.getElementById('product-list');
+      const productData = document.getElementById('product-data');
+      
+      productList.style.display = 'block';
+      productData.textContent = 'Loading...';
+
+      try {
+        const response = await fetch('@routes.ProductController.getAll.url', {
+          credentials: 'include',
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const products = await response.json();
+        productData.textContent = JSON.stringify(products, null, 2);
+        
+        console.log('CORS headers detected:', {
+          origin: response.headers.get('access-control-allow-origin'),
+          methods: response.headers.get('access-control-allow-methods')
+        });
+      } catch (error) {
+        productData.textContent = `Error: ${error.message}`;
+        console.error('Fetch error:', error);
+      }
+    });
+  </script>
 }
