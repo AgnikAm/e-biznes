@@ -6,7 +6,7 @@ import javax.inject._
 
 @Singleton
 class ProductRepository @Inject()() {
-  private var nextId: Long = 6 // Starting after initial 5 books
+  private var nextId: Long = 4
   private val products = mutable.ListBuffer(
     Product(1, "Norwegian Wood", 24.99),
     Product(2, "Kafka on the Shore", 27.50),

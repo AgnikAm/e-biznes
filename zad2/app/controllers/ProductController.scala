@@ -12,10 +12,12 @@ class ProductController @Inject()(
   productRepository: ProductRepository
 ) extends BaseController {
 
+  // GET /products
   def getAll: Action[AnyContent] = Action {
     Ok(Json.toJson(productRepository.getAll))
   }
 
+  // GET /products/{id}
   def getById(id: Long): Action[AnyContent] = Action {
     productRepository.getById(id) match {
       case Some(product) => Ok(Json.toJson(product))
@@ -23,6 +25,7 @@ class ProductController @Inject()(
     }
   }
 
+  // POST /products
   def create: Action[JsValue] = Action(parse.json) { request =>
     request.body.validate[Product].fold(
       errors => BadRequest(Json.obj("error" -> JsError.toJson(errors))),
@@ -35,6 +38,7 @@ class ProductController @Inject()(
     )
   }
 
+  // PUT /products/{id}
   def update(id: Long): Action[JsValue] = Action(parse.json) { request =>
     request.body.validate[Product].fold(
       errors => BadRequest(Json.obj("error" -> JsError.toJson(errors))),
@@ -47,6 +51,7 @@ class ProductController @Inject()(
     )
   }
 
+  // DELETE /products/{id}
   def delete(id: Long): Action[AnyContent] = Action {
     if (productRepository.delete(id)) {
       NoContent
