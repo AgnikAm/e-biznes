@@ -23,7 +23,9 @@ func (pc *ProductController) CreateProduct(c echo.Context) error {
 
 func (pc *ProductController) GetAllProducts(c echo.Context) error {
 	var products []models.Product
-	pc.DB.Find(&products)
+	if err := pc.DB.Preload("Category").Find(&products).Error; err != nil {
+		return c.JSON(http.StatusInternalServerError, echo.Map{"error": "Error while fetching products"})
+	}
 	return c.JSON(http.StatusOK, products)
 }
 

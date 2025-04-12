@@ -11,6 +11,7 @@ func InitRoutes(e *echo.Echo, db *gorm.DB) {
 	productController := &controller.ProductController{DB: db}
 	userController := &controller.UserController{DB: db}
 	cartController := &controller.CartController{DB: db}
+	categoryController := &controller.CategoryController{DB: db}
 
 	e.POST("/products", productController.CreateProduct)
 	e.GET("/products", productController.GetAllProducts)
@@ -29,4 +30,10 @@ func InitRoutes(e *echo.Echo, db *gorm.DB) {
 	e.GET("/cart/:user_id", cartController.GetCart)
 	e.PUT("/cart/:id", cartController.UpdateCart)
 	e.DELETE("/cart/:id", cartController.DeleteCart)
+
+	e.POST("/categories", categoryController.CreateCategory)
+	e.GET("/categories", categoryController.GetAllCategories)
+	e.GET("/categories/:id", categoryController.GetCategoryByID)
+	e.PUT("/categories/:id", categoryController.UpdateCategory)
+	e.DELETE("/categories/:id", categoryController.DeleteCategory)
 }
