@@ -7,3 +7,7 @@ type Category struct {
 	Name     string    `json:"name"`
 	Products []Product `gorm:"foreignKey:CategoryID"`
 }
+
+func WithProducts(db *gorm.DB) *gorm.DB {
+	return db.Preload("Products")
+}

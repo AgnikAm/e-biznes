@@ -8,3 +8,7 @@ type Cart struct {
 	User     User      `gorm:"foreignKey:UserID"`
 	Products []Product `gorm:"many2many:cart_products;"`
 }
+
+func WithUserAndProducts(db *gorm.DB) *gorm.DB {
+	return db.Preload("User").Preload("Products")
+}

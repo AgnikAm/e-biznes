@@ -23,7 +23,7 @@ func (pc *ProductController) CreateProduct(c echo.Context) error {
 
 func (pc *ProductController) GetAllProducts(c echo.Context) error {
 	var products []models.Product
-	if err := pc.DB.Preload("Category").Find(&products).Error; err != nil {
+	if err := pc.DB.Scopes(models.WithCategory).Find(&products).Error; err != nil {
 		return c.JSON(http.StatusInternalServerError, echo.Map{"error": "Error while fetching products"})
 	}
 	return c.JSON(http.StatusOK, products)
@@ -32,7 +32,7 @@ func (pc *ProductController) GetAllProducts(c echo.Context) error {
 func (pc *ProductController) GetProductByID(c echo.Context) error {
 	id := c.Param("id")
 	var product models.Product
-	if err := pc.DB.First(&product, id).Error; err != nil {
+	if err := pc.DB.Scopes(models.WithCategory).First(&product, id).Error; err != nil {
 		return c.JSON(http.StatusNotFound, echo.Map{"error": "Product not found"})
 	}
 	return c.JSON(http.StatusOK, product)

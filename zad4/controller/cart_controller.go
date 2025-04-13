@@ -28,7 +28,7 @@ func (cc *CartController) AddToCart(c echo.Context) error {
 	}
 
 	var updatedCart models.Cart
-	if err := cc.DB.Preload("User").Preload("Products").First(&updatedCart, cart.ID).Error; err != nil {
+	if err := cc.DB.Scopes(models.WithUserAndProducts).First(&updatedCart, cart.ID).Error; err != nil {
 		return c.JSON(http.StatusInternalServerError, echo.Map{"error": "Error while loading related data"})
 	}
 
@@ -38,7 +38,7 @@ func (cc *CartController) AddToCart(c echo.Context) error {
 func (cc *CartController) GetCart(c echo.Context) error {
 	id := c.Param("user_id")
 	var cart models.Cart
-	if err := cc.DB.Preload("Products").First(&cart, "user_id = ?", id).Error; err != nil {
+	if err := cc.DB.Scopes(models.WithUserAndProducts).First(&cart, "user_id = ?", id).Error; err != nil {
 		return c.JSON(http.StatusNotFound, echo.Map{"error": "Cart not found"})
 	}
 	return c.JSON(http.StatusOK, cart.Products)
@@ -46,7 +46,7 @@ func (cc *CartController) GetCart(c echo.Context) error {
 
 func (cc *CartController) GetAllCarts(c echo.Context) error {
 	var carts []models.Cart
-	if err := cc.DB.Preload("User").Preload("Products").Find(&carts).Error; err != nil {
+	if err := cc.DB.Scopes(models.WithUserAndProducts).Find(&carts).Error; err != nil {
 		return c.JSON(http.StatusInternalServerError, echo.Map{"error": "Error while retrieving carts"})
 	}
 

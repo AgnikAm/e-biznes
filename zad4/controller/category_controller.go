@@ -27,7 +27,7 @@ func (cc *CategoryController) CreateCategory(c echo.Context) error {
 
 func (cc *CategoryController) GetAllCategories(c echo.Context) error {
 	var categories []models.Category
-	if err := cc.DB.Preload("Products").Find(&categories).Error; err != nil {
+	if err := cc.DB.Scopes(models.WithProducts).Find(&categories).Error; err != nil {
 		return c.JSON(http.StatusInternalServerError, echo.Map{"error": "Error while fetching categories"})
 	}
 	return c.JSON(http.StatusOK, categories)
