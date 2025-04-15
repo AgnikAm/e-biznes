@@ -17,58 +17,82 @@ export default function App() {
     setCart([...cart, product]);
   };
 
+  const removeFromCart = (productToRemove: Product) => {
+    setCart((prev) =>
+      prev.filter((p) => p.id !== productToRemove.id || p !== productToRemove)
+    );
+  };
+
   const resetCart = () => {
     setCart([]);
     setView("products");
   };
 
+  const [cartId, setCartId] = useState<number | null>(null);
+
+  const handleGoToPayment = () => {
+    fetch("http://localhost:8080/cart", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ products: cart.map((p) => ({ id: p.id })) }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setCartId(data.ID);
+        setView("payment");
+      })
+      .catch(() => alert("Błąd tworzenia koszyka"));
+  };
+
   return (
-    <div className="p-6 font-sans">
-      <h1 className="text-3xl font-bold mb-4">🛍️ Sklep Internetowy</h1>
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="max-w-5xl w-full px-4 py-8 text-center">
+        <h1 className="text-3xl font-bold mb-6">🛍️ Sklep Internetowy</h1>
 
-      {view === "products" && (
-        <>
-          <ProductList addToCart={addToCart} />
-          <button
-            className="mt-4 bg-blue-500 text-white px-4 py-2 rounded"
-            onClick={() => setView("cart")}
-          >
-            Przejdź do koszyka ({cart.length})
-          </button>
-        </>
-      )}
-
-      {view === "cart" && (
-        <>
-          <Cart cart={cart} />
-          <div className="mt-4 space-x-2">
+        {view === "products" && (
+          <>
+            <ProductList addToCart={addToCart} />
             <button
-              className="bg-green-500 text-white px-4 py-2 rounded"
-              onClick={() => setView("payment")}
+              className="mt-6 bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600 transition"
+              onClick={() => setView("cart")}
             >
-              Przejdź do płatności
+              Przejdź do koszyka ({cart.length})
             </button>
-            <button
-              className="bg-gray-300 px-4 py-2 rounded"
-              onClick={() => setView("products")}
-            >
-              Powrót do produktów
-            </button>
-          </div>
-        </>
-      )}
+          </>
+        )}
 
-      {view === "payment" && (
-        <>
-          <Payment cart={cart} resetCart={resetCart} />
-          <button
-            className="mt-4 bg-gray-300 px-4 py-2 rounded"
-            onClick={() => setView("cart")}
-          >
-            Powrót do koszyka
-          </button>
-        </>
-      )}
+        {view === "cart" && (
+          <>
+            <Cart cart={cart} removeFromCart={removeFromCart} />
+            <div className="mt-6 space-x-3">
+              <button
+                className="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600"
+                onClick={handleGoToPayment}  // <-- use this!
+              >
+                Przejdź do płatności
+              </button>
+              <button
+                className="bg-gray-300 px-6 py-2 rounded hover:bg-gray-400"
+                onClick={() => setView("products")}
+              >
+                Powrót do produktów
+              </button>
+            </div>
+          </>
+        )}
+
+        {view === "payment" && cartId !== null && (
+          <>
+            <Payment cart={cart} cartId={cartId} resetCart={resetCart} />
+            <button
+              className="mt-6 bg-gray-300 px-6 py-2 rounded hover:bg-gray-400"
+              onClick={() => setView("cart")}
+            >
+              Powrót do koszyka
+            </button>
+          </>
+        )}
+      </div>
     </div>
   );
 }
