@@ -18,7 +18,6 @@ func (cc *CartController) AddToCart(c echo.Context) error {
 		return c.JSON(http.StatusBadRequest, echo.Map{"error": "Invalid cart format"})
 	}
 
-	// Trzeba załadować produkty z bazy i dodać je do koszyka przez ID
 	var productIDs []uint
 	for _, p := range cart.Products {
 		productIDs = append(productIDs, p.ID)

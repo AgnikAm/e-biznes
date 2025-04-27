@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Product } from "../App";
-import axios from "axios"; // <<--- DODANE
+import axios from "axios";
 
 interface Props {
   addToCart: (product: Product) => void;
