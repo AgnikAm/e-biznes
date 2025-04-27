@@ -2,6 +2,7 @@ package main
 
 import (
 	"zad5/backend/config"
+	"zad5/backend/models"
 	"zad5/backend/routes"
 
 	"github.com/labstack/echo/v4"
@@ -10,6 +11,13 @@ import (
 
 func main() {
 	db := config.InitDB()
+
+	db.AutoMigrate(
+		&models.Product{},
+		&models.Cart{},
+		&models.Payment{},
+	)
+
 	defer func() {
 		sqlDB, _ := db.DB()
 		sqlDB.Close()

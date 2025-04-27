@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Product } from "../App";
+import axios from "axios"; // <<--- DODANE
 
 interface Props {
   addToCart: (product: Product) => void;
@@ -9,9 +10,8 @@ export default function ProductList({ addToCart }: Props) {
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/products")
-      .then((res) => res.json())
-      .then((data) => setProducts(data))
+    axios.get("http://localhost:8080/products")
+      .then((res) => setProducts(res.data))
       .catch((err) => console.error("Błąd ładowania produktów:", err));
   }, []);
 

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Product } from "../App";
+import axios from "axios"; // <<--- DODANE
 
 interface Props {
   cart: Product[];
@@ -22,20 +23,15 @@ export default function Payment({ cart, cartId, resetCart }: Props) {
       cardNumber: cardNumber,
     };
 
-    fetch("http://localhost:8080/payment", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    })
+    axios.post("http://localhost:8080/payment", payload)
       .then((res) => {
-        if (res.ok) {
-          alert("Płatność zakończona sukcesem! 🎉");
-          resetCart();
-        } else {
-          alert("Błąd płatności.");
-        }
+        alert("Płatność zakończona sukcesem! 🎉");
+        resetCart();
       })
-      .catch(() => alert("Błąd połączenia z serwerem."));
+      .catch((err) => {
+        console.error("Błąd płatności:", err);
+        alert("Błąd płatności.");
+      });
   };
 
   return (

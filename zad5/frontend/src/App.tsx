@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ProductList from "./components/ProductList";
 import Cart from "./components/Cart";
 import Payment from "./components/Payment";
+import axios from "axios"; // <<--- DODANE
 
 export interface Product {
   id: number;
@@ -12,6 +13,7 @@ export interface Product {
 export default function App() {
   const [cart, setCart] = useState<Product[]>([]);
   const [view, setView] = useState<"products" | "cart" | "payment">("products");
+  const [cartId, setCartId] = useState<number | null>(null);
 
   const addToCart = (product: Product) => {
     setCart([...cart, product]);
@@ -28,17 +30,12 @@ export default function App() {
     setView("products");
   };
 
-  const [cartId, setCartId] = useState<number | null>(null);
-
   const handleGoToPayment = () => {
-    fetch("http://localhost:8080/cart", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ products: cart.map((p) => ({ id: p.id })) }),
+    axios.post("http://localhost:8080/cart", {
+      products: cart.map((p) => ({ id: p.id })),
     })
-      .then((res) => res.json())
-      .then((data) => {
-        setCartId(data.ID);
+      .then((res) => {
+        setCartId(res.data.ID);
         setView("payment");
       })
       .catch(() => alert("Błąd tworzenia koszyka"));
@@ -67,7 +64,7 @@ export default function App() {
             <div className="mt-6 space-x-3">
               <button
                 className="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600"
-                onClick={handleGoToPayment}  // <-- use this!
+                onClick={handleGoToPayment}
               >
                 Przejdź do płatności
               </button>
