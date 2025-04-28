@@ -12,6 +12,7 @@ import net.dv8tion.jda.api.requests.GatewayIntent
 
 fun main() {
     startKtorServer()
+    Database.init()
 
     val token = "INSERT_TOKEN"
 
@@ -22,7 +23,8 @@ fun main() {
         .build()
 
     jda.updateCommands().addCommands(
-        Commands.slash("hello", "Say hello to the bot")
+        Commands.slash("hello", "Say hello to the bot"),
+        Commands.slash("categories", "Show list of categories")
     ).queue()
 
     jda.awaitReady()
@@ -32,9 +34,8 @@ fun main() {
 class CommandListener : ListenerAdapter() {
     override fun onSlashCommandInteraction(event: SlashCommandInteractionEvent) {
         when (event.name) {
-            "hello" -> {
-                event.reply("Hi! I'm KtorBot").queue()
-            }
+            "hello" -> CommandActions.handleHello(event)
+            "categories" -> CommandActions.handleCategories(event)
         }
     }
 }
