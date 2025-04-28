@@ -30,6 +30,20 @@ Zadanie 2 Framework Play Scala
 
 Kod: https://github.com/AgnikAm/e-biznes/tree/main/zad2
 
+Zadanie 2 Framework Ktor Kotlin
+
+✅ 3.0 wymaganie 1 [Link do commita](https://github.com/AgnikAm/e-biznes/commit/062c71c574ee4fdae264d44fc563b7f7d43ded51)
+
+✅ 3.5 wymaganie 2 [Link do commita](https://github.com/AgnikAm/e-biznes/commit/062c71c574ee4fdae264d44fc563b7f7d43ded51)
+
+✅ 4.0 wymaganie 3 [Link do commita](https://github.com/AgnikAm/e-biznes/commit/d61063086a9d1fa89a6c4d534f97abc2ecfec015)
+
+✅ 4.5 wymaganie 4 [Link do commita](https://github.com/AgnikAm/e-biznes/commit/ead8e283a2266fd2927908550e097140f1934c2c)
+
+❌ 5.0 wymaganie 5
+
+Kod: https://github.com/AgnikAm/e-biznes/tree/main/zad3
+
 Zadanie 4 Framework Echo Go
 
 ✅ 3.0 wymaganie 1 [Link do commita](https://github.com/AgnikAm/e-biznes/commit/4d46b97189b0248995adce8d885d818ac4a32778)
