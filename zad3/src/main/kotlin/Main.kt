@@ -7,6 +7,7 @@ import net.dv8tion.jda.api.JDABuilder
 import net.dv8tion.jda.api.entities.Activity
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent
 import net.dv8tion.jda.api.hooks.ListenerAdapter
+import net.dv8tion.jda.api.interactions.commands.OptionType
 import net.dv8tion.jda.api.interactions.commands.build.Commands
 import net.dv8tion.jda.api.requests.GatewayIntent
 
@@ -24,7 +25,8 @@ fun main() {
 
     jda.updateCommands().addCommands(
         Commands.slash("hello", "Say hello to the bot"),
-        Commands.slash("categories", "Show list of categories")
+        Commands.slash("categories", "Show list of categories"),
+        Commands.slash("products", "Show products list").addOption(OptionType.STRING, "category", "Filter by category name", false),
     ).queue()
 
     jda.awaitReady()
@@ -36,6 +38,7 @@ class CommandListener : ListenerAdapter() {
         when (event.name) {
             "hello" -> CommandActions.handleHello(event)
             "categories" -> CommandActions.handleCategories(event)
+            "products" -> CommandActions.handleProducts(event)
         }
     }
 }

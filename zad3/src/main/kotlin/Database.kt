@@ -18,9 +18,9 @@ object Products : IntIdTable("products") {
 object Database {
     fun init() {
         try {
-            // Creates database file in project directory
+
             val dbFile = File("discord_bot.db").apply {
-                parentFile?.mkdirs() // Ensure directory exists
+                parentFile?.mkdirs()
             }
 
             Database.connect(
@@ -29,6 +29,8 @@ object Database {
             )
 
             transaction {
+                SchemaUtils.drop(Categories, Products)
+                SchemaUtils.create(Categories, Products)
                 SchemaUtils.createMissingTablesAndColumns(Categories, Products)
 
                 if (Categories.selectAll().empty()) {
