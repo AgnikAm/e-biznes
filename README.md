@@ -66,8 +66,22 @@ Zadanie 5 React
 
 ✅ 4.0 wymaganie 3 [Link do commita](https://github.com/AgnikAm/e-biznes/commit/bb009664bd5bd0af06c30d286eb7a1ec558b18bb)
 
-❌ 4.5 wymaganie 4 [Link do commita](https://github.com/AgnikAm/e-biznes/commit/841bc356340b23951dec4f227a142545a2b3b310)
+❌ 4.5 wymaganie 4
 
 ✅ 5.0 wymaganie 5 [Link do commita](https://github.com/AgnikAm/e-biznes/commit/7a4de44b83dffa804cf897bd56e215cce22ef475)
 
 Kod: https://github.com/AgnikAm/e-biznes/tree/main/zad5
+
+Zadanie 6 testy
+
+✅ 3.0 wymaganie 1 [Link do commita](https://github.com/AgnikAm/e-biznes/commit/eafafebe3d2140b83aeafbeabe3a882a7555e6d5)
+
+✅ 3.5 wymaganie 2 [Link do commita](https://github.com/AgnikAm/e-biznes/commit/eafafebe3d2140b83aeafbeabe3a882a7555e6d5)
+
+❌ 4.0 wymaganie 3
+
+❌ 4.5 wymaganie 4
+
+❌ 5.0 wymaganie 5
+
+Kod: https://github.com/AgnikAm/e-biznes/tree/main/zad6
