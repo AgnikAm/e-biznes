@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ProductList from "./components/ProductList";
 import Cart from "./components/Cart";
 import Payment from "./components/Payment";
-import axios from "axios"; // <<--- DODANE
+import axios from "axios";
 
 export interface Product {
   id: number;
@@ -62,12 +62,14 @@ export default function App() {
           <>
             <Cart cart={cart} removeFromCart={removeFromCart} />
             <div className="mt-6 space-x-3">
-              <button
-                className="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600"
-                onClick={handleGoToPayment}
-              >
-                Przejdź do płatności
-              </button>
+              {cart.length > 0 && (
+                <button
+                  className="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600"
+                  onClick={handleGoToPayment}
+                >
+                  Przejdź do płatności
+                </button>
+              )}
               <button
                 className="bg-gray-300 px-6 py-2 rounded hover:bg-gray-400"
                 onClick={() => setView("products")}

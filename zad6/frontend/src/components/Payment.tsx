@@ -11,26 +11,45 @@ interface Props {
 export default function Payment({ cart, cartId, resetCart }: Props) {
   const total = cart.reduce((sum, p) => sum + p.price, 0);
   const [cardNumber, setCardNumber] = useState("");
+  const [isProcessing, setIsProcessing] = useState(false);
+
+  // Formatuje numer karty na "1234 5678 9012 3456"
+  const formatCardNumber = (value: string) =>
+    value.replace(/\D/g, "").replace(/(.{4})/g, "$1 ").trim();
 
   const handlePayment = () => {
-    if (!cardNumber) {
+    const cleanedNumber = cardNumber.replace(/\s/g, "");
+
+    if (!cleanedNumber) {
       alert("Proszę podać numer karty.");
       return;
     }
 
+    if (!/^\d{16}$/.test(cleanedNumber)) {
+      alert("Numer karty musi składać się z 16 cyfr.");
+      return;
+    }
+
+    setIsProcessing(true);
+
     const payload = {
-      cartId: cartId,
-      cardNumber: cardNumber,
+      cartId,
+      cardNumber: cleanedNumber,
     };
 
-    axios.post("http://localhost:8080/payment", payload)
-      .then((res) => {
+    axios
+      .post("http://localhost:8080/payment", payload)
+      .then(() => {
         alert("Płatność zakończona sukcesem! 🎉");
         resetCart();
+        setCardNumber("");
       })
       .catch((err) => {
         console.error("Błąd płatności:", err);
         alert("Błąd płatności.");
+      })
+      .finally(() => {
+        setIsProcessing(false);
       });
   };
 
@@ -47,15 +66,16 @@ export default function Payment({ cart, cartId, resetCart }: Props) {
         data-testid="card-input"
         type="text"
         value={cardNumber}
-        onChange={(e) => setCardNumber(e.target.value)}
+        onChange={(e) => setCardNumber(formatCardNumber(e.target.value))}
         className="w-full border px-3 py-2 rounded mb-4"
         placeholder="1234 5678 9012 3456"
       />
 
       <button
         data-testid="pay-button"
-        className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700 transition"
+        className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700 transition disabled:opacity-50"
         onClick={handlePayment}
+        disabled={isProcessing}
       >
         Zapłać
       </button>
