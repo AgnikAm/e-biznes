@@ -61,7 +61,7 @@ export default function Payment({ cart, cartId, resetCart }: Props) {
         Do zapłaty: <strong>{total.toFixed(2)} zł</strong>
       </p>
 
-      <label className="block mb-2 font-medium">Numer karty:</label>
+      <label htmlFor="cardNumber" className="block mb-2 font-medium">Numer karty:</label>
       <input
         data-testid="card-input"
         type="text"
