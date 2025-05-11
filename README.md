@@ -92,11 +92,11 @@ Zadanie 7 Sonar
 
 ✅ 3.5 wymaganie 2
 
-❌ 4.0 wymaganie 3
+✅ 4.0 wymaganie 3
 
 ✅ 4.5 wymaganie 4
 
-❌ 5.0 wymaganie 5
+✅ 5.0 wymaganie 5
 
 Kod: https://github.com/AgnikAm/e-biznes/tree/main/zad7
 
