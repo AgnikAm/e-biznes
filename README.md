@@ -85,3 +85,17 @@ Zadanie 6 testy
 ❌ 5.0 wymaganie 5
 
 Kod: https://github.com/AgnikAm/e-biznes/tree/main/zad6
+
+Zadanie 7 Sonar
+
+✅ 3.0 wymaganie 1 [Link do commita](https://github.com/AgnikAm/e-biznes/commit/6dbd100f74a9977a6e89ae3d49e0750e26130ba4)
+
+❌ 3.5 wymaganie 2
+
+❌ 4.0 wymaganie 3
+
+❌ 4.5 wymaganie 4
+
+❌ 5.0 wymaganie 5
+
+Kod: https://github.com/AgnikAm/e-biznes/tree/main/zad7
