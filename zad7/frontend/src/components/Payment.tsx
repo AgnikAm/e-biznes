@@ -3,9 +3,9 @@ import { Product } from "../App";
 import axios from "axios";
 
 interface Props {
-  cart: Product[];
-  cartId: number;
-  resetCart: () => void;
+  readonly cart: Product[];
+  readonly cartId: number;
+  readonly resetCart: () => void;
 }
 
 export default function Payment({ cart, cartId, resetCart }: Props) {

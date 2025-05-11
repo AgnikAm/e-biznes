@@ -2,8 +2,8 @@ import React from "react";
 import { Product } from "../App";
 
 interface Props {
-  cart: Product[];
-  removeFromCart: (product: Product) => void;
+  readonly cart: Product[];
+  readonly removeFromCart: (product: Product) => void;
 }
 
 export default function Cart({ cart, removeFromCart }: Props) {

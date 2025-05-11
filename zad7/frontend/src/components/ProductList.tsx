@@ -3,7 +3,7 @@ import { Product } from "../App";
 import axios from "axios";
 
 interface Props {
-  addToCart: (product: Product) => void;
+  readonly addToCart: (product: Product) => void;
 }
 
 export default function ProductList({ addToCart }: Props) {
