@@ -60,7 +60,7 @@ describe('Koszyk', () => {
     };
 
     cy.get('[data-testid="cart-item"] span').then(($items) => {
-      const prices = $items.toArray().map((el) => getPrice(el.textContent || ''));
+      const prices = $items.toArray().map((el) => getPrice(el.textContent ?? ''));
       const expectedTotal = prices.reduce((a, b) => a + b, 0);
 
       cy.get('[data-testid="cart-total"]')
