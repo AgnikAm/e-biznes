@@ -54,7 +54,8 @@ describe('Koszyk', () => {
     cy.contains('Przejdź do płatności').should('exist'); // 24
 
     const getPrice = (text: string): number => {
-      const match = text.match(/(\d+(?:[.,]\d+)?)/);
+      const regex = /(\d+(?:[.,]\d+)?)/;
+      const match = regex.exec(text);
       return match ? parseFloat(match[1].replace(',', '.')) : 0;
     };
 
@@ -230,7 +231,8 @@ describe('Koszyk', () => {
     cy.contains('Przejdź do koszyka').click();
   
     const getPrice = (text: string): number => {
-      const match = text.match(/(\d+(?:[.,]\d+)?)/);
+      const regex = /(\d+(?:[.,]\d+)?)/;
+      const match = regex.exec(text);
       return match ? parseFloat(match[1].replace(',', '.')) : 0;
     };
   
