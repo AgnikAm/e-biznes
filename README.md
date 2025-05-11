@@ -90,12 +90,20 @@ Zadanie 7 Sonar
 
 ✅ 3.0 wymaganie 1 [Link do commita](https://github.com/AgnikAm/e-biznes/commit/6dbd100f74a9977a6e89ae3d49e0750e26130ba4)
 
-❌ 3.5 wymaganie 2
+✅ 3.5 wymaganie 2
 
 ❌ 4.0 wymaganie 3
 
-❌ 4.5 wymaganie 4
+✅ 4.5 wymaganie 4
 
 ❌ 5.0 wymaganie 5
 
 Kod: https://github.com/AgnikAm/e-biznes/tree/main/zad7
+
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=AgnikAm_e-biznes&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=AgnikAm_e-biznes)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=AgnikAm_e-biznes&metric=bugs)](https://sonarcloud.io/summary/new_code?id=AgnikAm_e-biznes)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=AgnikAm_e-biznes&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=AgnikAm_e-biznes)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=AgnikAm_e-biznes&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=AgnikAm_e-biznes)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=AgnikAm_e-biznes&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=AgnikAm_e-biznes)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=AgnikAm_e-biznes&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=AgnikAm_e-biznes)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=AgnikAm_e-biznes&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=AgnikAm_e-biznes)
