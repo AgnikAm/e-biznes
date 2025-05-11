@@ -8,6 +8,8 @@ import (
 	"gorm.io/gorm"
 )
 
+const notFoundMessage string = "cart not found"
+
 type CartController struct {
 	DB *gorm.DB
 }
@@ -40,7 +42,7 @@ func (cc *CartController) GetCart(c echo.Context) error {
 	id := c.Param("id")
 	var cart models.Cart
 	if err := cc.DB.Preload("Products").First(&cart, id).Error; err != nil {
-		return c.JSON(http.StatusNotFound, echo.Map{"error": "Cart not found"})
+		return c.JSON(http.StatusNotFound, echo.Map{"error": notFoundMessage})
 	}
 	return c.JSON(http.StatusOK, cart)
 }
@@ -62,7 +64,7 @@ func (cc *CartController) UpdateCart(c echo.Context) error {
 
 	var existingCart models.Cart
 	if err := cc.DB.First(&existingCart, id).Error; err != nil {
-		return c.JSON(http.StatusNotFound, echo.Map{"error": "Cart not found"})
+		return c.JSON(http.StatusNotFound, echo.Map{"error": notFoundMessage})
 	}
 
 	var products []models.Product
@@ -85,7 +87,7 @@ func (cc *CartController) DeleteCart(c echo.Context) error {
 	id := c.Param("id")
 	var cart models.Cart
 	if err := cc.DB.Preload("Products").First(&cart, id).Error; err != nil {
-		return c.JSON(http.StatusNotFound, echo.Map{"error": "Cart not found"})
+		return c.JSON(http.StatusNotFound, echo.Map{"error": notFoundMessage})
 	}
 
 	if err := cc.DB.Select("Products").Delete(&cart).Error; err != nil {
