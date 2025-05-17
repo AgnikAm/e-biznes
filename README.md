@@ -107,3 +107,17 @@ Kod: https://github.com/AgnikAm/e-biznes/tree/main/zad7
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=AgnikAm_e-biznes&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=AgnikAm_e-biznes)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=AgnikAm_e-biznes&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=AgnikAm_e-biznes)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=AgnikAm_e-biznes&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=AgnikAm_e-biznes)
+
+Zadanie 8 Oauth2
+
+✅ 3.0 wymaganie 1 [Link do commita](https://github.com/AgnikAm/e-biznes/commit/09c951a9dbb08a3f3469eaab72f30f630a4b3ee8)
+
+✅ 3.5 wymaganie 2 [Link do commita](https://github.com/AgnikAm/e-biznes/commit/09c951a9dbb08a3f3469eaab72f30f630a4b3ee8)
+
+❌ 4.0 wymaganie 3
+
+❌ 4.5 wymaganie 4
+
+❌ 5.0 wymaganie 5
+
+Kod: https://github.com/AgnikAm/e-biznes/tree/main/zad8
