@@ -121,3 +121,17 @@ Zadanie 8 Oauth2
 ❌ 5.0 wymaganie 5
 
 Kod: https://github.com/AgnikAm/e-biznes/tree/main/zad8
+
+Zadanie 9 Chat
+
+✅ 3.0 wymaganie 1 [Link do commita](https://github.com/AgnikAm/e-biznes/commit/b4301ffb78e9ff41d98383bf8ae6fd2da7be3de6)
+
+❌ 3.5 wymaganie 2
+
+❌ 4.0 wymaganie 3
+
+❌ 4.5 wymaganie 4
+
+❌ 5.0 wymaganie 5
+
+Kod: https://github.com/AgnikAm/e-biznes/tree/main/zad9
