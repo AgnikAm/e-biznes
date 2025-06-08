@@ -135,3 +135,17 @@ Zadanie 9 Chat
 ❌ 5.0 wymaganie 5
 
 Kod: https://github.com/AgnikAm/e-biznes/tree/main/zad9
+
+Zadanie 10 Chmura/CI
+
+✅ 3.0 wymaganie 1 [Link do commita](https://github.com/AgnikAm/e-biznes/commit/409710eb20fe6d318fa18479f7e3c4554d57bab8)
+
+❌ 3.5 wymaganie 2
+
+❌ 4.0 wymaganie 3
+
+❌ 4.5 wymaganie 4
+
+❌ 5.0 wymaganie 5
+
+Kod: https://github.com/AgnikAm/e-biznes/tree/main/zad10
